@@ -1,0 +1,12 @@
+{
+  "name": "thelunchproject",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    # thelunchproject
+    "client:start": "cd client && npm start",
+    "devstart": "nodemon ./bun/www"
+  },
+  "dependencies": {
+  }
+}
