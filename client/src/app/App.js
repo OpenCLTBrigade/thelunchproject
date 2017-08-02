@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import TeacherAddForm from './teacher/TeacherAddForm';
+import EducatorAddForm from './educator/EducatorAddForm';
 const App = () =>
   <div className="container-fluid">
-    <TeacherAddForm />
-    <Route path="/teach/add" component={TeacherAddForm} />
+    <Route path="/educator/add" component={EducatorAddForm} />
   </div>;
 
 export default App;
