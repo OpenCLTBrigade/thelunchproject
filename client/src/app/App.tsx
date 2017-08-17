@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import EducatorAddForm from './educator/EducatorAddForm'
 import Auth from './auth'
 
@@ -10,7 +10,13 @@ const About = () =>
 
 const App = () =>
     <div className="container-fluid">
-        <Route path="/" exact component={EducatorAddForm} />
+        <Route
+            path="/"
+            exact
+            render={() => {
+                return <Redirect to="/auth/login" />
+            }}
+        />
         <Route path="/auth" component={Auth} />
     </div>
 

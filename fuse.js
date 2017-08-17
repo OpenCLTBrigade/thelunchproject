@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express')
 
 const fuse = FuseBox.init({
+    modulesFolder: 'client/node_modules',
     plugins: [
         WebIndexPlugin({
             template: './client/index.html',
