@@ -1,5 +1,5 @@
-import { h } from 'preact'
-import { FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap'
+import { h, FunctionalComponent } from 'preact'
+import { FormGroup, Label, Input as FormInput, FormText, FormFeedback } from 'reactstrap'
 
 import { Field } from 'neoform'
 import { FieldValidation } from 'neoform-validation'
@@ -15,28 +15,44 @@ const getValidationState = validationStatus => {
     return null
 }
 
-const Input = ({
+interface InputProps {
+    label: string
+    name: string
+    value?: any
+    onChange?: Function
+    validate?: Function
+    validationMessage?: string
+    [index: string]: any
+}
+
+const Input: FunctionalComponent<InputProps> = ({
     label,
-    controlId,
     value = '',
     onChange,
     validate,
     validationStatus,
     validationMessage,
     children,
+    name,
     ...props
 }) =>
-    <FormGroup controlId={controlId} danger={getValidationState(validationStatus)}>
-        <Label>
+    <FormGroup color={getValidationState(validationStatus)}>
+        <Label for={name}>
             {label}
         </Label>
-        <Input value={value} onBlur={validate} onChange={e => onChange(e.target.value)} {...props}>
+        <FormInput
+            id={name}
+            name={name}
+            value={value}
+            onBlur={validate}
+            onChange={e => onChange(e.target.value)}
+            {...props}>
             {children && children}
-        </Input>
+        </FormInput>
         {validationStatus === false &&
             <FormFeedback>
                 {validationMessage}
             </FormFeedback>}
     </FormGroup>
 
-export default Field(FieldValidation(Input))
+export default Field(FieldValidation(Input)) as FunctionalComponent<InputProps>

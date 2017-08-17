@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "client:start": "cd client && npm start",
+    "start": "npm run client:start",
+    "client:start": "node fuse.js",
     "devstart": "nodemon ./bun/www"
   },
   "dependencies": {
+    "@types/reactstrap": "^4.3.9",
     "grommet": "^1.6.0",
     "neoform": "^0.2.0",
+    "neoform-plain-object-helpers": "^0.1.0",
     "neoform-validation": "^0.3.0",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",

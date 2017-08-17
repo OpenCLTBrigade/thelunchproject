@@ -5,11 +5,16 @@
         "jsx": "react",
         "jsxFactory": "h",
         "target": "es5",
+        "allowJs": true,
         "importHelpers": false,
+        "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "lib": [
             "dom",
             "es2015"
         ]
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
