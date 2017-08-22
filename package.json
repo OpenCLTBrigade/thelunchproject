@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    # thelunchproject
-    "client:start": "cd client && npm start",
+    "start": "npm run client:start",
+    "postinstall": "cd client && npm install",
+    "client:start": "node fuse.js",
     "devstart": "nodemon ./bun/www"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "fuse-box": "^2.2.1",
+    "rimraf": "^2.6.1",
+    "typescript": "^2.4.2"
   }
 }
