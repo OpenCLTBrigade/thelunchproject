@@ -1,16 +1,17 @@
 # The Lunch Project
 
-
 ## Server Configuration Setup
-docker pull mysql
-docker run --name db-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=UNCCrugby_49 -d mysql
+docker pull postgres
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 
 #installation to do db migrations
-npm install -g sequelize-cli
-npm install -g mysql2
+TODO
 
 #command to update database with latest migrations.
-sequelize db:migrate
+TODO
 
 #command to create databae migrations
-sequelize migration:create
+TODO
+
+## Run client & server
+`cross-env DB_HOST="<HOST>" DB_USERNAME="<YOUR_DB_USERNAME>" DB_PASSWORD="<DB_PASSWORD>" DB_NAME="<DB_NAME>" node fuse`
