@@ -1,7 +1,7 @@
 import { h, Component } from 'preact'
 import LoginForm from './LoginForm'
 import { setValue, getValue } from 'neoform-plain-object-helpers'
-
+import AuthStore from '../common/auth'
 export default class Login extends Component<any, any> {
     constructor() {
         super()
@@ -20,6 +20,7 @@ export default class Login extends Component<any, any> {
     }
 
     onSubmit(e) {
+        AuthStore.login(this.state)
         console.log('onSubmit', this.state)
     }
     render() {

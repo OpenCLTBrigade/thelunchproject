@@ -2,10 +2,18 @@ const { FuseBox, WebIndexPlugin, BabelPlugin, EnvPlugin } = require('fuse-box')
 const path = require('path')
 const express = require('express')
 
+const PORT = process.env.PORT || 3030
+
 const client = FuseBox.init({
     homeDir: 'client',
     modulesFolder: 'client/node_modules',
     plugins: [
+        EnvPlugin({
+            API_URL: process.env.API_URL || `http://localhost:${PORT}`,
+            DB_USERNAME: process.env.DB_USERNAME,
+            DB_HOST: process.env.DB_HOST,
+            NODE_ENV: 'development'
+        }),
         WebIndexPlugin({
             template: './client/index.html',
             path: '/static/'
@@ -38,6 +46,7 @@ const server = FuseBox.init({
     output: 'dist/server/$name.js',
     plugins: [
         EnvPlugin({
+            PORT,
             DB_PASSWORD: process.env.DB_PASSWORD,
             DB_USERNAME: process.env.DB_USERNAME,
             DB_HOST: process.env.DB_HOST,
