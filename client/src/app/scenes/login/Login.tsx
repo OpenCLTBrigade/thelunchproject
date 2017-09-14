@@ -5,10 +5,13 @@ import AuthService from '../../services/auth/auth'
 import { Section } from 'bloomer'
 
 export default class Login extends Component<any, any> {
-    constructor() {
+    history: any
+    constructor({ history }) {
         super()
 
         this.state = {}
+
+        this.history = history
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -22,8 +25,8 @@ export default class Login extends Component<any, any> {
     }
 
     onSubmit(e) {
-        AuthService.login(this.state)
-        console.log('onSubmit', this.state)
+        console.log(this.history)
+        AuthService.login(this.state).then(() => this.history.push('/'))
     }
     render() {
         return (

@@ -11,18 +11,21 @@ export const NoMatch = () => (
     </div>
 )
 
-const Home = props => (
-    <div>
-        <NavBar />
-        <Section>
-            <Switch>
-                {pages.map((page, key) => (
-                    <Route key={key} path={`${props.match.url}${page.to}`} component={page.component} />
-                ))}
-                <Route render={() => <Container children={<NoMatch />} />} />
-            </Switch>
-        </Section>
-    </div>
-)
+const Home = props => {
+    console.log(props)
+    return (
+        <div>
+            <NavBar history={props.history} />
+            <Section>
+                <Switch>
+                    {pages.map((page, key) => (
+                        <Route key={key} path={`${props.match.url}${page.to}`} component={page.component} />
+                    ))}
+                    <Route render={() => <Container children={<NoMatch />} />} />
+                </Switch>
+            </Section>
+        </div>
+    )
+}
 
 export default Home

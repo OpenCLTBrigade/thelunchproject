@@ -1,10 +1,8 @@
 import api from '../api/api'
 
 class AuthService {
-    private _token: string = localStorage.getItem('token')
-
     isLoggedIn() {
-        return !!this._token
+        return !!localStorage.getItem('token')
     }
 
     login({ email, password }) {

@@ -1,12 +1,14 @@
 import { h, Component } from 'preact'
 
-import { Container, Navbar, NavbarBrand, NavbarItem, NavbarMenu, NavbarStart, NavbarBurger } from 'bloomer'
+import { Container, Navbar, NavbarBrand, NavbarItem, NavbarMenu, NavbarStart, NavbarBurger, NavbarEnd } from 'bloomer'
+import AuthService from '../../../services/auth/auth'
+export default class NavBar extends Component<any, { isActive: boolean; isDropdownOpen: boolean; history?: any }> {
+    state = { isActive: false, isDropdownOpen: false, history: undefined }
 
-export default class NavBar extends Component<any, { isActive: boolean; isDropdownOpen: boolean }> {
-    state = { isActive: false, isDropdownOpen: false }
-
-    constructor() {
+    constructor(props) {
         super()
+
+        this.state.history = props.history
     }
 
     onClickNav = () => {
@@ -17,7 +19,11 @@ export default class NavBar extends Component<any, { isActive: boolean; isDropdo
         this.setState(state => ({ isDropdownOpen: !state.isDropdownOpen }))
     }
 
-    render() {
+    onClickLogout = () => {
+        AuthService.logout()
+    }
+
+    render({ history }) {
         return (
             <Container>
                 <Navbar>
@@ -29,6 +35,11 @@ export default class NavBar extends Component<any, { isActive: boolean; isDropdo
                         <NavbarStart>
                             <NavbarItem href="/">Home</NavbarItem>
                         </NavbarStart>
+                        <NavbarEnd>
+                            <NavbarItem href="/login" onClick={this.onClickLogout}>
+                                Sign Out
+                            </NavbarItem>
+                        </NavbarEnd>
                     </NavbarMenu>
                 </Navbar>
             </Container>
