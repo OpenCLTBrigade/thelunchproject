@@ -1,8 +1,10 @@
 import { h, Component } from 'preact'
-import RegisterForm from './RegisterForm'
+import LoginForm from './LoginForm'
 import { setValue, getValue } from 'neoform-plain-object-helpers'
+import AuthService from '../../services/auth/auth'
+import { Section } from 'bloomer'
 
-export default class Register extends Component<any, any> {
+export default class Login extends Component<any, any> {
     constructor() {
         super()
 
@@ -12,7 +14,6 @@ export default class Register extends Component<any, any> {
         this.onSubmit = this.onSubmit.bind(this)
     }
     onChange(name, value) {
-        console.log(name, value)
         this.setState(prevState => setValue(prevState, name, value))
     }
 
@@ -21,17 +22,20 @@ export default class Register extends Component<any, any> {
     }
 
     onSubmit(e) {
+        AuthService.login(this.state)
         console.log('onSubmit', this.state)
     }
     render() {
         return (
-            <RegisterForm
-                data={this.state}
-                getValue={getValue}
-                onChange={this.onChange}
-                onInvalid={this.onInvalid}
-                onSubmit={this.onSubmit}
-            />
+            <Section>
+                <LoginForm
+                    data={this.state}
+                    getValue={getValue}
+                    onChange={this.onChange}
+                    onInvalid={this.onInvalid}
+                    onSubmit={this.onSubmit}
+                />
+            </Section>
         )
     }
 }

@@ -2,14 +2,15 @@ import { h } from 'preact'
 
 import { Form as createForm } from 'neoform'
 import { FormValidation } from 'neoform-validation'
-import { Form, Button } from 'reactstrap'
-import Input from '../../components/form/input'
+import { Button } from 'bloomer'
+import Input from '../../components/form/Input'
 import Checkbox from '../../components/form/checkbox'
 import RequiredValidator from '../../../util/validators/required.validator'
+import Select from '../../components/form/Select'
 
 const RegisterForm = ({ onSubmit, validate, onInvalid }) => {
     return (
-        <Form
+        <form
             onSubmit={e => {
                 e.preventDefault()
                 validate(onSubmit, onInvalid)
@@ -19,15 +20,15 @@ const RegisterForm = ({ onSubmit, validate, onInvalid }) => {
             <Input label="Email address" type="email" name="email" validator={RequiredValidator('Required')} />
             <Input label="Password" type="password" name="password" validator={RequiredValidator('Required')} />
             <Input label="School" type="text" name="school" validator={RequiredValidator('Required')} />
-            <Input label="Grade Level" type="select" name="gradeLevel" validator={RequiredValidator('Required')}>
+            <Select label="Grade Level" name="gradeLevel" validator={RequiredValidator('Required')}>
                 <option value="" />
                 <option value="1">K-2</option>
                 <option value="2">3-5</option>
                 <option value="3">Middle school</option>
                 <option value="4">High school</option>
-            </Input>
+            </Select>
             <Button type="submit">Login</Button>
-        </Form>
+        </form>
     )
 }
 

@@ -1,4 +1,4 @@
-import api from '../../common/api'
+import api from '../api/api'
 
 class AuthService {
     private _token: string = localStorage.getItem('token')
