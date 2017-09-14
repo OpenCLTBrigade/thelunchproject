@@ -1,4 +1,4 @@
-const { FuseBox, WebIndexPlugin, BabelPlugin, EnvPlugin, QuantumPlugin } = require('fuse-box')
+const { FuseBox, WebIndexPlugin, BabelPlugin, EnvPlugin, QuantumPlugin, SVGPlugin } = require('fuse-box')
 const path = require('path')
 const express = require('express')
 var compression = require('compression')
@@ -10,6 +10,7 @@ const client = FuseBox.init({
     homeDir: 'client',
     modulesFolder: 'client/node_modules',
     plugins: [
+        SVGPlugin(),
         EnvPlugin({
             API_URL: process.env.API_URL || `http://localhost:${PORT}`,
             DB_USERNAME: process.env.DB_USERNAME,
