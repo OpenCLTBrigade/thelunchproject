@@ -1,8 +1,10 @@
-const { FuseBox, WebIndexPlugin, BabelPlugin, EnvPlugin } = require('fuse-box')
+const { FuseBox, WebIndexPlugin, BabelPlugin, EnvPlugin, QuantumPlugin } = require('fuse-box')
 const path = require('path')
 const express = require('express')
+var compression = require('compression')
 
 const PORT = process.env.PORT || 3030
+const isProduction = !!process.env.NODE_ENV
 
 const client = FuseBox.init({
     homeDir: 'client',
@@ -17,7 +19,13 @@ const client = FuseBox.init({
         WebIndexPlugin({
             template: './client/index.html',
             path: '/static/'
-        })
+        }),
+        isProduction &&
+            QuantumPlugin({
+                removeExportsInterop: false,
+                uglify: true,
+                treeshake: true
+            })
     ],
     output: 'dist/static/$name.js',
     alias: {
@@ -32,6 +40,7 @@ client
 client.dev({ root: false }, server => {
     const dist = path.resolve('./dist')
     const app = server.httpServer.app
+    app.use(compression())
     app.use('/static/', express.static(path.join(dist, 'static')))
 
     app.get('*', function(req, res) {
