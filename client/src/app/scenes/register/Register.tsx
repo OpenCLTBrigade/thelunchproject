@@ -1,7 +1,15 @@
 import { h, Component } from 'preact'
-import RegisterForm from './RegisterForm'
 import { setValue, getValue } from 'neoform-plain-object-helpers'
-import { Section } from 'bloomer'
+import { Section, Title } from 'bloomer'
+import * as cxs from 'cxs'
+
+import RegisterForm from './RegisterForm'
+import Logo from '../../components/logo/Logo'
+import Box from '../../components/box/Box'
+
+const logo = cxs({
+    marginBottom: '10px'
+})
 
 export default class Register extends Component<any, any> {
     constructor() {
@@ -21,19 +29,23 @@ export default class Register extends Component<any, any> {
         console.log('onInvalid')
     }
 
-    onSubmit(e) {
+    onSubmit() {
         console.log('onSubmit', this.state)
     }
     render() {
         return (
             <Section>
-                <RegisterForm
-                    data={this.state}
-                    getValue={getValue}
-                    onChange={this.onChange}
-                    onInvalid={this.onInvalid}
-                    onSubmit={this.onSubmit}
-                />
+                <Logo containerCls={logo} />
+                <Box>
+                    <Title>Register</Title>
+                    <RegisterForm
+                        data={this.state}
+                        getValue={getValue}
+                        onChange={this.onChange}
+                        onInvalid={this.onInvalid}
+                        onSubmit={this.onSubmit}
+                    />
+                </Box>
             </Section>
         )
     }

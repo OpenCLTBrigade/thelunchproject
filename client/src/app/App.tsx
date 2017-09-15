@@ -1,6 +1,5 @@
 import { h } from 'preact'
 import { Route, Redirect } from 'react-router-dom'
-import EducatorAddForm from './educator/EducatorAddForm'
 import Login from './scenes/login'
 import Register from './scenes/register'
 import Home from './scenes/home'

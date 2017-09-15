@@ -2,7 +2,15 @@ import { h, Component } from 'preact'
 import LoginForm from './LoginForm'
 import { setValue, getValue } from 'neoform-plain-object-helpers'
 import AuthService from '../../services/auth/auth'
-import { Section } from 'bloomer'
+import { Section, Title } from 'bloomer'
+import Logo from '../../components/logo/Logo'
+import Box from '../../components/box/Box'
+
+import * as cxs from 'cxs'
+
+const logo = cxs({
+    marginBottom: '10px'
+})
 
 export default class Login extends Component<any, any> {
     history: any
@@ -24,20 +32,24 @@ export default class Login extends Component<any, any> {
         console.log('onInvalid')
     }
 
-    onSubmit(e) {
+    onSubmit() {
         console.log(this.history)
         AuthService.login(this.state).then(() => this.history.push('/'))
     }
     render() {
         return (
             <Section>
-                <LoginForm
-                    data={this.state}
-                    getValue={getValue}
-                    onChange={this.onChange}
-                    onInvalid={this.onInvalid}
-                    onSubmit={this.onSubmit}
-                />
+                <Logo className={logo} />
+                <Box>
+                    <Title>Login</Title>
+                    <LoginForm
+                        data={this.state}
+                        getValue={getValue}
+                        onChange={this.onChange}
+                        onInvalid={this.onInvalid}
+                        onSubmit={this.onSubmit}
+                    />
+                </Box>
             </Section>
         )
     }

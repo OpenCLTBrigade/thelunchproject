@@ -1,4 +1,4 @@
-import { h, FunctionalComponent } from 'preact'
+import { h } from 'preact'
 import { Route, Switch } from 'react-router-dom'
 import { Container, Title, Section } from 'bloomer'
 import NavBar from './NavBar/NavBar'

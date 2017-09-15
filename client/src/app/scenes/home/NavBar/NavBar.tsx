@@ -2,6 +2,8 @@ import { h, Component } from 'preact'
 
 import { Container, Navbar, NavbarBrand, NavbarItem, NavbarMenu, NavbarStart, NavbarBurger, NavbarEnd } from 'bloomer'
 import AuthService from '../../../services/auth/auth'
+import Logo from '../../../components/logo/Logo'
+
 export default class NavBar extends Component<any, { isActive: boolean; isDropdownOpen: boolean; history?: any }> {
     state = { isActive: false, isDropdownOpen: false, history: undefined }
 
@@ -23,12 +25,14 @@ export default class NavBar extends Component<any, { isActive: boolean; isDropdo
         AuthService.logout()
     }
 
-    render({ history }) {
+    render() {
         return (
             <Container>
                 <Navbar>
                     <NavbarBrand>
-                        <NavbarItem href="/">TheLunchProject</NavbarItem>
+                        <NavbarItem href="/">
+                            <Logo size="small" />
+                        </NavbarItem>
                         <NavbarBurger isActive={this.state.isActive} onClick={this.onClickNav} />
                     </NavbarBrand>
                     <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
