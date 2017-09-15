@@ -1,19 +1,6 @@
 # The Lunch Project
 This application, developed by [Code for Charlotte]. See [Dependencies Documentation](#dependencies-documentation) below for more information on the dependencies we use.
 
-#installation to do db migrations
-TODO
-
-#command to update database with latest migrations.
-TODO
-
-#command to create databae migrations
-TODO
-
-### How to Contribute?
-
-Check the [CONTRIBUTING](/CONTRIBUTING.md) file for more information about this project and how to help.
-
 ## Dependencies Documentation
 
 The backend is an [Express] application running in [Node] and enhanced with [routing-controllers]. The source code is written in [TypeScript] and transpiled to JavaScript using [FuseBox]
@@ -30,6 +17,10 @@ emails.
 The frontend is written with [Preact], a lightweight flavor of [React].  The UI is styled with [Bloomer] which is based on [Bulma].  Communication with the API is handled through [axios]. We're using [cxs] for custom styles (in place of LESS / SCSS).
 
 Back end tests are run using [tbd].
+
+## How to Contribute?
+
+Check the [CONTRIBUTING](/CONTRIBUTING.md) file for more information about this project and how to help.
 
 [Code for Charlotte]: http://www.codeforcharlotte.org/
 [Node]: https://nodejs.org/en/docs/

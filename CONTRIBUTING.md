@@ -25,6 +25,9 @@ Now that you're all set up, you're ready to edit the code.
 1. Update files in the `server` and `client` folders
 2. Build and start the client/server with `npm start`
 
+## Database migrations
+TODO
+
 ### Commits
 Commit messages should follow the format of a summary followed by the change type in a parenthesis:
 	
