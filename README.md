@@ -1,23 +1,5 @@
 # The Lunch Project
-This application, developed by [Code for Charlotte]
-## Getting Started
-[Node] and [Docker] are required.
-See [Dependencies Documentation](#dependencies-documentation) below for more information on the dependencies we use.
-
-### Server configuration setup
-
-With [Docker] installed
-
-* Run `docker pull postgres`
-* Run `docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
-
-### Running the app
-
-With [Node] installed
-
-* Clone from github: `git clone https://github.com/CodeForCharlotte/thelunchproject.git && cd thelunchproject`
-* Run `npm install` to install the dependencies.
-* Run `npm start` to run the client & server with development defaults.
+This application, developed by [Code for Charlotte]. See [Dependencies Documentation](#dependencies-documentation) below for more information on the dependencies we use.
 
 #installation to do db migrations
 TODO
@@ -27,6 +9,10 @@ TODO
 
 #command to create databae migrations
 TODO
+
+### How to Contribute?
+
+Check the [CONTRIBUTING](/CONTRIBUTING.md) file for more information about this project and how to help.
 
 ## Dependencies Documentation
 
