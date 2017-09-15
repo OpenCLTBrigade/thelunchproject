@@ -27,9 +27,6 @@ Now that you're all set up, you're ready to edit the code.
 
 ### Commits
 Commit messages should follow the format of a summary followed by the change type in a parenthesis:
-
-## Database migrations
-TODO
 	
 > Error logging works now (patch)
 
@@ -38,6 +35,8 @@ Change types you can use are:
 * minor - Indicates backwards-compatible features or changes
 * patch - Indicates backwards-compatible bug fixes
 
+## Database migrations
+TODO
 
 ## Submitting a Pull Request
 
