@@ -2,13 +2,18 @@
 This application, developed by [Code for Charlotte]
 ## Getting Started
 [Node] and [Docker] are required.
-See [Dependencies Documentation] below for more information on the dependencies we use.
+See [Dependencies Documentation](#dependencies-documentation) below for more information on the dependencies we use.
 
 ### Server configuration setup
-docker pull postgres
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+With [Docker] installed
+
+* Run `docker pull postgres`
+* Run `docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
 
 ### Running the app
+
+With [Node] installed
 
 * Clone from github: `git clone https://github.com/CodeForCharlotte/thelunchproject.git && cd thelunchproject`
 * Run `npm install` to install the dependencies.
