@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { createConnection, getEntityManager } from 'typeorm'
-import { User } from './app/entities/user'
+import { User, Educator } from './app/entities'
 import { controllers } from './app/index'
 import { createExpressServer, Action } from 'routing-controllers'
 import { decodeToken } from './app/util/jwt'
@@ -55,7 +55,7 @@ createConnection({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     synchronize: true,
-    entities: [User]
+    entities: [User, Educator]
 })
     .then(() => createApp())
     .catch(err => console.error(err))
