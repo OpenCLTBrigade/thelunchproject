@@ -62,6 +62,7 @@ createConnection({
 
 const createApp = () => {
     const app = createExpressServer({
+        cors: true,
         controllers,
         authorizationChecker,
         currentUserChecker,

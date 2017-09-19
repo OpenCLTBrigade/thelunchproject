@@ -1,14 +1,16 @@
 import { h } from 'preact'
-import { FormGroup, Label, Input as FormInput } from 'reactstrap'
+import { Checkbox, Field, Control } from 'bloomer'
 
-import { Field } from 'neoform'
+import { Field as createField } from 'neoform'
 
-const Checkbox = ({ label, value = false, onChange, children, name, ...props }) =>
-    <FormGroup check>
-        <Label for={name} check>
-            <FormInput id={name} name={name} onChange={e => onChange(e.target.checked)} type="checkbox" {...props} />
-            {label}
-        </Label>
-    </FormGroup>
+const FormCheckbox = ({ label, value = false, onChange, children, name, ...props }) => (
+    <Field check>
+        <Control>
+            <Checkbox id={name} name={name} onChange={e => onChange(e.target.checked)} {...props}>
+                {label}
+            </Checkbox>
+        </Control>
+    </Field>
+)
 
-export default Field(Checkbox)
+export default createField(FormCheckbox)

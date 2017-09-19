@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
+    "bloomer": "^0.6.2",
+    "cxs": "^6.0.0",
     "neoform": "^0.2.0",
     "neoform-plain-object-helpers": "^0.1.0",
     "neoform-validation": "^0.3.0",

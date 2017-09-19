@@ -2,16 +2,16 @@ import { h } from 'preact'
 
 import { Form as createForm } from 'neoform'
 import { FormValidation } from 'neoform-validation'
-import { Form, Button } from 'reactstrap'
-import Input from '../../components/form/input'
-import Checkbox from '../../components/form/checkbox'
+import { Button } from 'bloomer'
+import Input from '../../components/form/Input'
+import Checkbox from '../../components/form/Checkbox'
 import RequiredValidator from '../../../util/validators/required.validator'
 import EmailValidator from '../../../util/validators/email.validator'
 import compose from '../../../util/validators/composeValidators'
 
 const LoginForm = ({ onSubmit, validate, onInvalid }) => {
     return (
-        <Form
+        <form
             onSubmit={e => {
                 e.preventDefault()
                 validate(onSubmit, onInvalid)
@@ -25,7 +25,7 @@ const LoginForm = ({ onSubmit, validate, onInvalid }) => {
             <Input label="Password" type="password" name="password" validator={RequiredValidator('Required')} />
             <Checkbox label="Remember me" name="rememberMe" />
             <Button type="submit">Login</Button>
-        </Form>
+        </form>
     )
 }
 
