@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cross-env DB_HOST=localhost DB_USERNAME=postgres DB_PASSWORD=mysecretpassword DB_NAME=postgres node fuse",
+    "start": "cross-env DB_HOST=localhost DB_USERNAME=postgres DB_PASSWORD=postgres DB_NAME=postgres node fuse",
     "postinstall": "cd client && npm install",
     "devstart": "nodemon ./bun/www"
   },
