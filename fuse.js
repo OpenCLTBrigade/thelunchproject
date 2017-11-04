@@ -8,7 +8,7 @@ const isProduction = !!process.env.NODE_ENV
 
 const client = FuseBox.init({
     target: 'browser',
-    homeDir: 'client',
+    homeDir: 'packages/client',
     modulesFolder: 'client/node_modules',
     plugins: [
         SVGPlugin(),
@@ -19,7 +19,7 @@ const client = FuseBox.init({
             NODE_ENV: 'development'
         }),
         WebIndexPlugin({
-            template: './client/index.html',
+            template: './packages/client/index.html',
             path: '/static/'
         }),
         isProduction &&
@@ -35,6 +35,7 @@ const client = FuseBox.init({
         'react-dom': 'preact-compat'
     }
 })
+
 client
     .bundle('client')
     .instructions(`>src/index.tsx`)
@@ -53,7 +54,7 @@ client.run()
 
 const server = FuseBox.init({
     target: 'server',
-    homeDir: 'server',
+    homeDir: 'packages/server',
     modulesFolder: 'server/node_modules',
     output: 'dist/server/$name.js',
     plugins: [
