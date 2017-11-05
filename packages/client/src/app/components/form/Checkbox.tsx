@@ -3,7 +3,7 @@ import { Checkbox, Field, Control } from 'bloomer'
 
 import { Field as createField } from 'neoform'
 
-const FormCheckbox = ({ label, value = false, onChange, children, name, ...props }) => (
+const FormCheckbox = ({ label, onChange, name, ...props }) => (
     <Field check>
         <Control>
             <Checkbox id={name} name={name} onChange={e => onChange(e.target.checked)} {...props}>

@@ -1,6 +1,6 @@
 import { h, FunctionalComponent } from 'preact'
 
-import { Input as FormInput, Field, Label, Control, Select, Help } from 'bloomer'
+import { Input as FormInput, Field, Label, Control, Help } from 'bloomer'
 
 import { Field as createField } from 'neoform'
 import { FieldValidation } from 'neoform-validation'
