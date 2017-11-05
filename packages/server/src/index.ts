@@ -45,11 +45,11 @@ const currentUserChecker = async (action: Action) => {
     }
 }
 
-const database = process.env.NODE_ENV !== 'production' ? 'db/thelunchproject.sql' : 'thelunchproject'
+const database = 'db/thelunchproject.sql'
 
 createConnection({
     type: 'sqlite',
-    database: database,
+    database,
     synchronize: true,
     entities: [User, Educator]
 })
