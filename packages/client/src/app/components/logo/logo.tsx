@@ -5,6 +5,7 @@ import * as cxs from 'cxs'
 type LogoProps = {
     className?: string
     size?: 'small' | 'medium' | 'large'
+    containerCls?: any
 }
 
 const container = cxs({

@@ -2,14 +2,21 @@ const { FuseBox, WebIndexPlugin, BabelPlugin, EnvPlugin, QuantumPlugin, SVGPlugi
 const path = require('path')
 const express = require('express')
 var compression = require('compression')
+const TypeHelper = require('fuse-box-typechecker').TypeHelper
 
 const PORT = process.env.PORT || 3030
 const isProduction = !!process.env.NODE_ENV
 
+var typeHelper = TypeHelper({
+    tsConfig: './tsconfig.json',
+    basePath: './',
+    name: 'Typechecker',
+    yellowOnOptions: true
+})
+
 const client = FuseBox.init({
     target: 'browser',
-    homeDir: 'client',
-    modulesFolder: 'client/node_modules',
+    homeDir: 'packages/client',
     plugins: [
         SVGPlugin(),
         EnvPlugin({
@@ -19,7 +26,7 @@ const client = FuseBox.init({
             NODE_ENV: 'development'
         }),
         WebIndexPlugin({
-            template: './client/index.html',
+            template: './packages/client/index.html',
             path: '/static/'
         }),
         isProduction &&
@@ -35,10 +42,13 @@ const client = FuseBox.init({
         'react-dom': 'preact-compat'
     }
 })
+
 client
     .bundle('client')
-    .instructions(`>src/index.tsx`)
     .watch('client/**')
+    .instructions(`>src/index.tsx`)
+    .completed(() => typeHelper.runSync())
+
 client.dev({ root: false }, server => {
     const dist = path.resolve('./dist')
     const app = server.httpServer.app
@@ -53,8 +63,7 @@ client.run()
 
 const server = FuseBox.init({
     target: 'server',
-    homeDir: 'server',
-    modulesFolder: 'server/node_modules',
+    homeDir: 'packages/server',
     output: 'dist/server/$name.js',
     plugins: [
         EnvPlugin({
@@ -74,6 +83,10 @@ server
     .watch('server/**') // watch only server related code.. bugs up atm
     .instructions(' > [src/index.ts]')
     // launch and restart express
-    .completed(proc => proc.start())
+    .completed(proc => {
+        proc.start()
+
+        typeHelper.runSync()
+    })
 
 server.run()

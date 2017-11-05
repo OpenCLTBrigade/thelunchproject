@@ -1,7 +1,6 @@
-import { ClassEntityChild, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { ClassEntityChild, Column } from 'typeorm'
 
 import { User } from './user'
-import { Educator as EducatorModel } from '../models/educator'
 
 @ClassEntityChild()
 export class Educator extends User {

@@ -4,30 +4,13 @@
   "private": true,
   "scripts": {
     "start": "cross-env DB_HOST=localhost DB_USERNAME=postgres DB_PASSWORD=postgres DB_NAME=postgres node fuse",
-    "postinstall": "cd client && npm install",
     "devstart": "nodemon ./bun/www"
   },
-  "dependencies": {
-    "bcrypt": "^1.0.3",
-    "body-parser": "^1.17.2",
-    "cookie-parser": "~1.4.3",
-    "cors": "^2.8.4",
-    "debug": "~2.6.3",
-    "express": "^4.15.4",
-    "hbs": "~4.0.1",
-    "jsonwebtoken": "^7.4.3",
-    "morgan": "~1.8.1",
-    "multer": "^1.3.0",
-    "mysql": "^2.13.0",
-    "pg": "^7.2.0",
-    "pino": "^4.7.1",
-    "reflect-metadata": "^0.1.10",
-    "routing-controllers": "^0.7.1",
-    "sequelize": "^3.30.4",
-    "sequelize-cli": "^2.7.0",
-    "serve-favicon": "~2.4.2",
-    "typeorm": "0.1.0-alpha.35"
-  },
+  "workspaces": [
+    "packages/client",
+    "packages/server"
+  ],
+  "dependencies": {},
   "devDependencies": {
     "@types/bcrypt": "^1.0.0",
     "@types/body-parser": "^1.16.5",
@@ -38,13 +21,6 @@
     "@types/multer": "^1.3.3",
     "@types/node": "^8.0.26",
     "@types/pino": "^4.7.0",
-    "@types/serve-favicon": "^2.2.29",
-    "compression": "^1.7.0",
-    "cross-env": "^5.0.5",
-    "fuse-box": "^2.2.1",
-    "nodemon": "^1.11.0",
-    "rimraf": "^2.6.1",
-    "typescript": "^2.4.2",
-    "uglify-js": "^3.1.0"
+    "@types/serve-favicon": "^2.2.29"
   }
 }

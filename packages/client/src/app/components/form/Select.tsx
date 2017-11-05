@@ -3,7 +3,7 @@ import { h } from 'preact'
 import { Field, Label, Control, Select } from 'bloomer'
 import { Field as createField } from 'neoform'
 
-const SelectField = ({ label, value = false, onChange, children, name, ...props }) => (
+const SelectField = ({ label, onChange, children, name, ...props }) => (
     <Field>
         <Label for={name}>
             {label}

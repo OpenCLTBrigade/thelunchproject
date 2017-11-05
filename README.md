@@ -24,7 +24,7 @@ Check the [CONTRIBUTING](/CONTRIBUTING.md) file for more information about this 
 
 [Code for Charlotte]: http://www.codeforcharlotte.org/
 [Node]: https://nodejs.org/en/docs/
-[Docker]: https://www.docker.com
+[Yarn]: https://yarnpkg.com/en/
 [Express]: https://expressjs.com/en/4x/api.html
 [routing-controllers]: https://github.com/pleerock/routing-controllers
 [jsonwebtoken]: https://github.com/auth0/node-jsonwebtoken
