@@ -1,17 +1,17 @@
-import { getEntityManager } from 'typeorm'
+import { getRepository } from 'typeorm'
 
 import { encodeToken } from '../util/jwt'
 import { hashPassword, verifyPassword } from '../util/crypto'
 import { User, Educator } from '../entities'
-import { User as UserModel } from '../models'
+// import { User as UserModel } from '../models'
 import logger from '../util/logger'
-
-const getRepo = <T>(table: string) => getEntityManager().getRepository<T>(table)
 
 export const getToken = async ({ email, password }) => {
     logger.info('authenticating user', { email })
+
     try {
-        let user = await getRepo<User>('User').findOne({ email })
+        let user = await getRepository(User).findOne({ email })
+
         let match = await verifyPassword(password, user.password)
 
         return match ? await encodeToken({ email: user.email }) : undefined
@@ -23,9 +23,9 @@ export const getToken = async ({ email, password }) => {
 
 export const registerUser = async user => {
     try {
-        const repo = getRepo<User>('User')
+        const repo = getRepository(User)
         user.password = await hashPassword(user.password)
-        return await repo.persist(user)
+        return await repo.save(user)
     } catch (error) {
         logger.error(error)
 
@@ -35,10 +35,10 @@ export const registerUser = async user => {
 
 export const registerEducator = async educator => {
     try {
-        const repo = getRepo<Educator>('Educator')
+        const repo = getRepository(Educator)
 
         educator.password = await hashPassword(educator.password)
-        return await repo.persist(educator)
+        return await repo.save(educator)
     } catch (error) {
         logger.error(error)
 
@@ -48,7 +48,7 @@ export const registerEducator = async educator => {
 
 export const userExists = async email => {
     try {
-        const repo = getRepo<User>('User')
+        const repo = getRepository(User)
 
         const existing = await repo.findOne({ email })
         return !!existing

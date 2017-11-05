@@ -25,7 +25,7 @@
     "sequelize": "^3.30.4",
     "sequelize-cli": "^2.7.0",
     "serve-favicon": "~2.4.2",
-    "typeorm": "0.1.0-alpha.35"
+    "typeorm": "^0.1.2"
   },
   "devDependencies": {
     "compression": "^1.7.1",
@@ -33,6 +33,7 @@
     "fuse-box": "^2.4.0",
     "nodemon": "^1.12.1",
     "rimraf": "^2.6.2",
+    "sqlite3": "^3.1.13",
     "typescript": "^2.6.1",
     "uglify-js": "^3.1.6"
   }

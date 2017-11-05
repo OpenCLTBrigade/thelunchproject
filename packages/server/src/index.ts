@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { createConnection, getEntityManager } from 'typeorm'
+import { createConnection, getManager } from 'typeorm'
 import { User, Educator } from './app/entities'
 import { controllers } from './app/index'
 import { createExpressServer, Action } from 'routing-controllers'
@@ -22,7 +22,7 @@ const authorizationChecker = async (action: Action, roles: string[]) => {
     try {
         const token = getToken(action.request.headers)
         const { email } = (await decodeToken(token)) as any
-        user = await getEntityManager().findOne<User>(User, { email })
+        user = await getManager().findOne<User>(User, { email })
     } catch (error) {
         return false
     }
@@ -37,7 +37,7 @@ const currentUserChecker = async (action: Action) => {
     try {
         const token = getToken(action.request.headers)
         const { email } = (await decodeToken(token)) as any
-        const user = await getEntityManager().findOne<User>(User, { email })
+        const user = await getManager().findOne<User>(User, { email })
         console.log(user.omit('password'))
         return user.omit('password')
     } catch (error) {
@@ -45,15 +45,11 @@ const currentUserChecker = async (action: Action) => {
     }
 }
 
-const database = process.env.NODE_ENV !== 'production' ? 'postgres' : 'thelunchproject'
+const database = process.env.NODE_ENV !== 'production' ? 'db/thelunchproject.sql' : 'thelunchproject'
 
 createConnection({
-    type: 'postgres',
-    port: 5432,
-    host: process.env.DB_HOST,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    type: 'sqlite',
+    database: database,
     synchronize: true,
     entities: [User, Educator]
 })
